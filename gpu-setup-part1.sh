@@ -5,6 +5,8 @@
 #	exit
 #fi
 
+sudo apt-get update
+
 SETUP_DIR="$HOME/gpu-setup"
 mkdir -p $SETUP_DIR
 cd $SETUP_DIR

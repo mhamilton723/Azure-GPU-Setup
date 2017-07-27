@@ -55,10 +55,37 @@ sudo apt-get -y install libcupti-dev
 # upgrade pip
 sudo pip install --upgrade pip
 
-# install tensorflow 1.0
-export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.0.1-cp27-none-linux_x86_64.whl
+mkdir ~/Downloads
 
-sudo pip install --upgrade $TF_BINARY_URL
+cd ~/Downloads
+chmod +x bazel-0.4.5-installer-linux-x86_64.sh
+./bazel-0.4.5-installer-linux-x86_64.sh --user
+
+echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc
+
+sudo pip install grpcio
+
+sudo apt-get update && sudo apt-get install -y \
+        build-essential \
+        curl \
+        libcurl3-dev \
+        git \
+        libfreetype6-dev \
+        libpng12-dev \
+        libzmq3-dev \
+        pkg-config \
+        python-dev \
+        python-numpy \
+        python-pip \
+        software-properties-common \
+        swig \
+        zip \
+        zlib1g-dev
+
+git clone --recurse-submodules https://github.com/tensorflow/serving
+cd serving
+
+cd tensorflow
 
 echo "Script done"
 
